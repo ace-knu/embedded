@@ -1,4 +1,5 @@
 # Embedded Programming
+임베디드 프로그래밍 강의 자료 및 실습 자료입니다.
 
 ## Embedded C Programming
 
