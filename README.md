@@ -1,2 +1,14 @@
-# embedded
-임베디드 프로그래밍 실습 자료
+# Embedded Programming
+
+## Embedded C Programming
+
+## Embedded MCU Programming
+
+### Arduino
+
+### S32K144
+
+### TC275
+
+## Embedded SW Projects
+
