@@ -139,17 +139,22 @@ void init_GTM_TOM0_PWM(void)
     /* GTM Clock Setting */
     GTM_CMU_FXCLK_CTRL &= ~((0xF) << FXCLK_SEL);    // Input clock of CMU_FXCLK : CMU_GCLK_EN
 
-    GTM_CMU_CLK_EN |= ((0x2) << EN_FXCLK);          // Enable all CMU_FXCLK
+    GTM_CMU_CLK_EN &= ~((0x3) << EN_FXCLK);         // Enable all CMU_FXCLK
+    GTM_CMU_CLK_EN |= ((0x2) << EN_FXCLK);
 
     /* GTM TOM0 PWM Setting */
-    GTM_TOM0_TGC0_GLB_CTRL |= ((0x2) << UPEN_CTRL1);    // TOM0 channel 1 enable update of
-                                                        // register CM0, CM1, CLK_SRC
+    GTM_TOM0_TGC0_GLB_CTRL &= ~((0x3) << UPEN_CTRL1);   // TOM0 channel 1 enable update of
+    GTM_TOM0_TGC0_GLB_CTRL |= ((0x2) << UPEN_CTRL1);    // register CM0, CM1, CLK_SRC
 
-    GTM_TOM0_TGC0_FUPD_CTRL |= ((0x2) << FUPD_CTRL1);   // Enable force update of TOM0 channel 1
-    GTM_TOM0_TGC0_FUPD_CTRL |= ((0x2) << RSTCN0_CH1);   // Reset CN0 of TOM0 channel 1 on force update
+    GTM_TOM0_TGC0_FUPD_CTRL &= ~((0x3) << FUPD_CTRL1);  // Enable force update of TOM0 channel 1
+    GTM_TOM0_TGC0_FUPD_CTRL |= ((0x2) << FUPD_CTRL1);
+    GTM_TOM0_TGC0_FUPD_CTRL &= ~((0x3) << RSTCN0_CH1);  // Reset CN0 of TOM0 channel 1 on force update
+    GTM_TOM0_TGC0_FUPD_CTRL |= ((0x2) << RSTCN0_CH1);
 
-    GTM_TOM0_TGC0_ENDIS_CTRL |= ((0x2) << ENDIS_CTRL1); // Enable channel 1 on an update trigger
-    GTM_TOM0_TGC0_OUTEN_CTRL |= ((0x2) << OUTEN_CTRL1); // Enable channel 1 output on an update trigger
+    GTM_TOM0_TGC0_ENDIS_CTRL &= ~((0x3) << ENDIS_CTRL1); // Enable channel 1 on an update trigger
+    GTM_TOM0_TGC0_ENDIS_CTRL |= ((0x2) << ENDIS_CTRL1);
+    GTM_TOM0_TGC0_OUTEN_CTRL &= ~((0x3) << OUTEN_CTRL1); // Enable channel 1 output on an update trigger
+    GTM_TOM0_TGC0_OUTEN_CTRL |= ((0x2) << OUTEN_CTRL1);
 
     GTM_TOM0_CH1_CTRL |= (1 << SL);                     // High signal level for duty cycle
 
