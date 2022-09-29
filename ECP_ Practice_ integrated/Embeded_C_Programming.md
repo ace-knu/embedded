@@ -258,12 +258,13 @@
  <img src = "./ECP_ Practice_ integrated_Picture/함수포인터_1_1.jpg">
 </p>
 
+
+>  <strong>  예제2 : 함수 포인터 배열을 활용한 함수 호출 </strong>
+
 <p align="center">
  <img src = "./ECP_ Practice_ integrated_Picture/함수포인터_2_1.jpg">
 </p>
 
-
->  <strong>  예제2 : 함수 포인터 배열을 활용한 함수 호출 </strong>
 
 ***
 
