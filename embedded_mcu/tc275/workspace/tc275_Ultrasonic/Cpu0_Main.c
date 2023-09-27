@@ -346,7 +346,7 @@ void initCCU61(void)
     CCU61_TCTR0 |= 0x1 << T12PRE;           // f_T12 = f_CCU6 / 256 = 97,656 Hz
 
 
-    CCU61_T12PR = 100000 -1;                // PM interrupt freq. = f_T12 / (T12PR + 1)
+    CCU61_T12PR = 0xff;                    // 16-bit max number
     CCU61_TCTR4 |= 0x1 << T12STR;           // load T12PR from shadow register
 
     CCU61_T12 = 0;                          // clear T12 counter register
