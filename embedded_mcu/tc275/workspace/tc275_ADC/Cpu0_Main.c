@@ -65,6 +65,7 @@
 #define ICLSEL          0
 #define VF              31
 #define RESULT          0
+#define EXTR            7
 
 /* Define PORT02/10 Registers for RGB LED */
 #define PORT02_BASE     (0xF003A200)
@@ -209,12 +210,10 @@ void init_VADC(void)
 void VADC_startConversion(void)
 {
     /* No fill and Start Queue */
-    VADC_G4QINR0 &= ~(0x1F);                 // Request Channel Number : 7
-    VADC_G4QINR0 |= (0x07);
+    VADC_G4QINR0 |= (0x07)                    // Request Channel Number : 7
+            | (1 << EXTR);                    // Enable Trigger Functionality
 
-    VADC_G4QINR0 &= ~(1 << RF);              // No fill : it is converted once
-
-    VADC_G4QMR0 |= (1 << TREV);              // Generate a Trigger Event
+    VADC_G4QMR0 |= (1 << TREV);               // Generate a Trigger Event
 }
 
 unsigned int VADC_readResult(void)
