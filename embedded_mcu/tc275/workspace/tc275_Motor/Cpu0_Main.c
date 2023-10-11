@@ -315,11 +315,22 @@ void initGTM(void)
 
 
     GTM_CMU_FXCLK_CTRL &= ~((0x0F) << FXCLK_SEL);
-    GTM_CMU_CLK_EN |= ((0x02) << EN_FXCLK);
 
-    GTM_TOM0_TGC1_GLB_CTRL |= ((0x02) << UPEN_CTRL1);
-    GTM_TOM0_TGC1_ENDIS_CTRL |= ((0x02) << ENDIS_CTRL1);
-    GTM_TOM0_TGC1_OUTEN_CTRL |= ((0x02) << OUTEN_CTRL1);
+    GTM_CMU_CLK_EN &= ~((0x3) << EN_FXCLK);              // Enable all CMU_FXCLK
+    GTM_CMU_CLK_EN |=  ((0x2) << EN_FXCLK);
+
+    GTM_TOM0_TGC1_GLB_CTRL &= ~((0x3) << UPEN_CTRL1);    // TOM0 channel 9 enable update of
+    GTM_TOM0_TGC1_GLB_CTRL |=  ((0x2) << UPEN_CTRL1);    // register CM0, CM1, CLK_SRC
+
+    GTM_TOM0_TGC1_FUPD_CTRL &= ~((0x3) << FUPD_CTRL1);   // Enable force update of TOM0 channel 9
+    GTM_TOM0_TGC1_FUPD_CTRL |=  ((0x2) << FUPD_CTRL1);
+    GTM_TOM0_TGC1_FUPD_CTRL &= ~((0x3) << RSTCN0_CH1);   // Reset CN0 of TOM0 channel 9 on force update
+    GTM_TOM0_TGC1_FUPD_CTRL |=  ((0x2) << RSTCN0_CH1);
+
+    GTM_TOM0_TGC1_ENDIS_CTRL &= ~((0x3) << ENDIS_CTRL1); // Enable channel 9 on an update trigger
+    GTM_TOM0_TGC1_ENDIS_CTRL |=  ((0x2) << ENDIS_CTRL1);
+    GTM_TOM0_TGC1_OUTEN_CTRL &= ~((0x3) << OUTEN_CTRL1); // Enable channel 9 output on an update trigger
+    GTM_TOM0_TGC1_OUTEN_CTRL |=  ((0x2) << OUTEN_CTRL1);
 
     GTM_TOM0_CH9_CTRL |= ((0x01) << SL);
     GTM_TOM0_CH9_CTRL |= ((0x01) << CLK_SRC_SR);
