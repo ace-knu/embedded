@@ -92,11 +92,13 @@ void init_LED(void)
 /* Initialize Switch2 */
 void init_Switch(void)
 {
-    /* Reset PC1 in IOCR0*/
+    /* Reset PC1 & PC2 in IOCR0*/
     PORT02_IOCR0 &= ~((0x1F) << PC1);
+    PORT02_IOCR0 &= ~((0x1F) << PC2);
 
-    /* Set PC1 with push-pull(2b0xx10) */
+    /* Set PC1 & PC2 with Input Mode(2b0xx10) */
     PORT02_IOCR0 |= ((0x2) << PC1);
+    PORT02_IOCR0 |= ((0x2) << PC2);
 }
 
 /* Initialize External Request Unit (ERU) */
