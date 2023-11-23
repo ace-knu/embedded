@@ -210,7 +210,7 @@ void init_VADC(void)
 void VADC_startConversion(void)
 {
     /* No fill and Start Queue */
-    VADC_G4QINR0 |= (0x07)                    // Request Channel Number : 7
+    VADC_G4QINR0 = (0x07)                     // Request Channel Number : 7
             | (1 << EXTR);                    // Enable Trigger Functionality
 
     VADC_G4QMR0 |= (1 << TREV);               // Generate a Trigger Event
