@@ -12,4 +12,3 @@
 ### - TC275
 
 ## - Embedded SW Projects
-
